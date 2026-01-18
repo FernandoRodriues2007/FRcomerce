@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRcomerce - Login</title>
+    <link rel="shortcut icon" href="assets/img/f" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h2 class="text-3xl text-blue-600 font-bold text-center mb-4"><i class="fa fa-cart-plus"
+                    aria-hidden="true"></i> FRcomerce</h2>
+            <form class="space-y-4">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="emailuser" name="email" required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" id="senhausuario" name="password" required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="flex  justify-between w-full">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    </label>
+                    <a href="recuperarSenha.html" class="text-blue-600 hover:text-blue-800 ml-2 text-sm">Esqueceu a senha?</a>
+                </div>
+                <div>
+                    <button id="btn" onclick="login()" type="button"
+                        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Login</button>
+                </div>
+                <div class="w-full text-center">
+
+                    <a href="criarconta.html" class="text-blue-600 hover:text-blue-800 ">Já tens uma conta? Criar
+                        conta</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <script src="assets/js/login.js"></script>
+
+
+
+
+</body>
+
+</html>
