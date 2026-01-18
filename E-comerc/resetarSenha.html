@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRcomerce - Resetar Senha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h2 class="text-3xl text-blue-600 font-bold text-center mb-4"><i class="fa fa-cart-plus" aria-hidden="true"></i> FRcomerce</h2>
+            
+            <div id="carregando" class="text-center">
+                <p class="text-gray-600">Verificando token...</p>
+            </div>
+
+            <form id="formResetarSenha" class="space-y-4 hidden">
+                <div>
+                    <label for="novaSenha" class="block text-sm font-medium text-gray-700">Nova Senha</label>
+                    <input type="password" id="novaSenha" name="novaSenha" required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Mínimo 6 caracteres">
+                </div>
+
+                <div>
+                    <label for="confirmaSenha" class="block text-sm font-medium text-gray-700">Confirmar Senha</label>
+                    <input type="password" id="confirmaSenha" name="confirmaSenha" required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Repita sua nova senha">
+                </div>
+
+                <p class="text-xs text-gray-500">
+                    A senha deve ter pelo menos 6 caracteres.
+                </p>
+
+                <div>
+                    <button type="button" id="btnResetar" onclick="resetarSenha(event)" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">Resetar Senha</button>
+                </div>
+
+                <div class="w-full text-center">
+                    <a href="login.html" class="text-blue-600 hover:text-blue-800">Voltar para Login</a>
+                </div>
+            </form>
+
+            <div id="erro" class="hidden text-center text-red-600">
+                <p id="mensagemErro"></p>
+                <button onclick="window.location.href = 'login.html'" class="mt-4 text-blue-600 hover:text-blue-800">Voltar para Login</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/resetarSenha.js"></script>
+</body>
+</html>

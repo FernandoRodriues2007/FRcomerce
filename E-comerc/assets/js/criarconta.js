@@ -1,34 +1,66 @@
-function criarConta() {
-    const nome = document.querySelector('#nome').value;
-    const email = document.querySelector('#email').value;
-    const senha = document.querySelector('#senha').value;
+// Configurar URL da API
+const API_URL = 'http://localhost:3000/api'; // Mude para sua URL de produção
 
-    if (nome === "" || email === "" || !email.includes("@") || senha === "" ||
-        senha.length < 6 ||
-        senha.length > 12 ||
-        /\s/.test(senha) ||
-        !/[A-Z]/.test(senha) ||
-        !/[a-z]/.test(senha) ||
-        !/[0-9]/.test(senha) ||
-        !/[!@#$%^&*(),.?":{}|<>]/.test(senha) ||
-        /[çÇ]/.test(senha) || /[áàâãäåÁÀÂÃÄÅéèêëÉÈÊËíìîïÍÌÎÏóòôõöÓÒÔÕÖúùûüÚÙÛÜ]/.test(senha) ||
-        /[~`´]/.test(senha) ||
-        /[-_+=]/.test(senha) ||
-        /[\[\]\\;/]/.test(senha) ||
-        /[:,]/.test(senha) ||
-        !/[!@#$%^&*(),.?":{}|<>]/.test(senha)) {
+async function criarConta(event) {
+    if (event) event.preventDefault();
+    
+    const nome = document.querySelector('#nome').value.trim();
+    const email = document.querySelector('#email').value.trim();
+    const senha = document.querySelector('#senha').value;
+    const btnCriar = document.querySelector('#criar');
+
+    // Validação básica
+    if (!nome || !email || !senha) {
         alert("Por favor, preencha todos os campos.");
         return;
     }
 
+    if (!email.includes("@")) {
+        alert("Por favor, insira um email válido.");
+        return;
+    }
 
-    localStorage.setItem("Nome", nome);
-    localStorage.setItem("Email", email);
-    localStorage.setItem("Senha", senha);
+    if (senha.length < 6) {
+        alert("A senha deve ter pelo menos 6 caracteres.");
+        return;
+    }
 
-    sessionStorage.setItem("Nome", nome);
-    sessionStorage.setItem("Email", email);
-    sessionStorage.setItem("Senha", senha);
+    // Desabilitar botão durante envio
+    btnCriar.disabled = true;
+    btnCriar.textContent = "Criando conta...";
 
-    alert("Conta criada com sucesso!");
+    try {
+        const response = await fetch(`${API_URL}/auth/registrar`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nome,
+                email,
+                senha
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.erro || "Erro ao criar conta. Tente novamente.");
+            btnCriar.disabled = false;
+            btnCriar.textContent = "Criar Conta";
+            return;
+        }
+
+        // Sucesso - salvar token e redirecionar
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('usuario', JSON.stringify(data.usuario));
+        
+        alert("Conta criada com sucesso! Redirecionando para o login...");
+        window.location.href = "login.html";
+    } catch (error) {
+        console.error('Erro:', error);
+        alert("Erro ao conectar com o servidor. Verifique se a API está rodando.");
+        btnCriar.disabled = false;
+        btnCriar.textContent = "Criar Conta";
+    }
 }

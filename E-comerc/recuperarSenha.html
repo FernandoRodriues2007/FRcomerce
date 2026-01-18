@@ -1,63 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRcomerce - Recuperar senha</title>
+    <title>FRcomerce - Recuperar Senha</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <div class="min-h-screen flex items-center justify-center bg-gray-100">
         <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-            <h2 class="text-3xl text-blue-600 font-bold text-center mb-4"><i class="fa fa-cart-plus"
-                    aria-hidden="true"></i> FRcomerce</h2>
-            <form class="space-y-4">
+            <h2 class="text-3xl text-blue-600 font-bold text-center mb-4"><i class="fa fa-cart-plus" aria-hidden="true"></i> FRcomerce</h2>
+            
+            <form id="formRecuperarSenha" class="space-y-4">
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                     <input type="email" id="email" name="email" required
-                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="seu-email@example.com">
                 </div>
+                
+                <p class="text-sm text-gray-600 text-center">
+                    Insira seu email e enviaremos um link para você resetar sua senha.
+                </p>
+                
                 <div>
-                    <button type="button" onclick="recuperarSenha()" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Recuperar Senha</button>
+                    <button type="button" id="btnRecuperar" onclick="recuperarSenha(event)" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">Enviar Link de Recuperação</button>
                 </div>
+                
                 <div class="w-full text-center">
-                    <a href="login.html" class="text-blue-600 hover:text-blue-800 ">Voltar para Login</a>
+                    <a href="login.html" class="text-blue-600 hover:text-blue-800">Voltar para Login</a>
                 </div>
             </form>
         </div>
     </div>
 
-    <script>
-        function recuperarSenha() {
-            var email = document.getElementById("email").value;
-            if(!email) {
-                alert("Por favor, insira um email válido.");
-                return;
-            }
-
-            fetch('http://localhost:3000/api/recuperar-senha', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email: email })
-            })
-            .then(async response => {
-                const data = await response.json();
-                if (response.ok) {
-                    alert(data.mensage);
-                    window.location.href = "login.html";
-                } else {
-                    alert(data.error);
-                }
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                alert("Erro de conexão com o servidor");
-            });
-        }
-    </script>
-
+    <script src="assets/js/recuperarSenha.js"></script>
 </body>
 </html>
