@@ -3,7 +3,8 @@
  * Use este arquivo no seu frontend para comunicar com a API
  */
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000/api';
+// Use URL relativa para funcionar em qualquer origem
+const API_URL = '/api'; // Acessa a API na mesma origem
 
 class APIClient {
   constructor() {

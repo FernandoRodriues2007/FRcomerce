@@ -1,12 +1,16 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import authRoutes from './api/routes/authRoutes.js';
 import productRoutes from './api/routes/productRoutes.js';
 import orderRoutes from './api/routes/orderRoutes.js';
 import userRoutes from './api/routes/userRoutes.js';
 import passwordRoutes from './api/routes/passwordRoutes.js';
 import { authenticateToken, errorHandler, notFound } from './api/middlewares/auth.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 dotenv.config();
 
@@ -21,6 +25,9 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Servir arquivos estáticos (HTML, CSS, JS do frontend)
+app.use(express.static(path.join(__dirname, 'E-comerc')));
 
 // Rota de saúde (para Vercel health checks)
 app.get('/api/health', (req, res) => {

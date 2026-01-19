@@ -4,7 +4,8 @@
  */
 
 // Configuração da API
-const API_URL = 'http://localhost:3000/api';
+// Use URL relativa para funcionar em qualquer origem
+const API_URL = '/api'; // Acessa a API na mesma origem
 
 /**
  * Obter token do localStorage

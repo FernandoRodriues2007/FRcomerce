@@ -1,5 +1,6 @@
 // Configurar URL da API
-const API_URL = 'http://localhost:3000/api'; // Mude para sua URL de produção
+// Use URL relativa para funcionar em qualquer origem
+const API_URL = '/api'; // Acessa a API na mesma origem
 
 // Obter token da URL
 function obterTokenDaURL() {
