@@ -1,0 +1,228 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║          ✅ ERRO VERCEL RESOLVIDO - DATABASE_URL ✅                       ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+🔴 PROBLEMA REPORTADO
+═══════════════════════════════════════════════════════════════════════════════
+
+Deployment failed — Environment Variable "DATABASE_URL" references Secret 
+"database_url", which does not exist.
+
+
+❌ CAUSA RAIZ
+═══════════════════════════════════════════════════════════════════════════════
+
+O arquivo `vercel.json` estava tentando referenciar secrets do Vercel que
+não foram criados:
+
+ANTES (ERRADO):
+  "env": {
+    "DATABASE_URL": "@database_url",    ← Procura por secret "database_url"
+    "JWT_SECRET": "@jwt_secret",        ← Procura por secret "jwt_secret"
+    ...
+  }
+
+O Vercel não conseguia encontrar esses secrets porque eles não existem.
+
+
+✅ SOLUÇÃO IMPLEMENTADA
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Remover a seção "env" do vercel.json
+2. Configurar as variáveis diretamente no Vercel Dashboard
+
+DEPOIS (CORRETO):
+  {
+    "version": 2,
+    "builds": [...],
+    "routes": [...]
+    // Sem seção "env"
+  }
+
+
+🔧 PASSOS PARA RESOLVER
+═══════════════════════════════════════════════════════════════════════════════
+
+1. CONFIGURAR NO VERCEL DASHBOARD
+   ├─ Acesse: https://vercel.com/dashboard
+   ├─ Selecione projeto: FRcomerce
+   ├─ Clique: Settings > Environment Variables
+   └─ Adicione as variáveis (veja próxima seção)
+
+2. ADICIONAR VARIÁVEIS (Uma por Uma)
+   ├─ DATABASE_URL = postgresql://user:pass@host:port/db
+   ├─ JWT_SECRET = [novo valor seguro com openssl rand -hex 32]
+   ├─ FRONTEND_URL = https://seu-dominio-frontend.vercel.app
+   ├─ SMTP_HOST = smtp.gmail.com
+   ├─ SMTP_PORT = 587
+   ├─ SMTP_USER = seu-email@gmail.com
+   ├─ SMTP_PASS = [senha de app Google]
+   └─ NODE_ENV = production
+
+3. FAZER NOVO DEPLOY
+   ├─ Opção A: git commit --allow-empty && git push
+   ├─ Opção B: Vercel Dashboard > Deployments > Redeploy
+   └─ Aguardar novo build
+
+4. TESTAR
+   └─ curl https://seu-projeto.vercel.app/api/health
+      Deve retornar: {"status":"OK","message":"API está funcionando"}
+
+
+📝 VARIÁVEIS A CONFIGURAR NO VERCEL
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─ DATABASE_URL (CRÍTICA) ──────────────────────────────────────────────────┐
+│                                                                            │
+│ Formato: postgresql://usuario:senha@host:porta/banco                     │
+│                                                                            │
+│ Exemplos por Provedor:                                                  │
+│                                                                            │
+│ Supabase:                                                               │
+│   postgresql://postgres.xxxxx:senha@db.xxxxx.supabase.co:5432/postgres  │
+│                                                                            │
+│ Railway:                                                                 │
+│   postgresql://root:senha@containers.railway.app:7899/railway           │
+│                                                                            │
+│ Neon:                                                                    │
+│   postgresql://user:senha@ep-xxx.us-east-1.neon.tech/neondb             │
+│                                                                            │
+│ Heroku:                                                                  │
+│   postgresql://user:senha@ec2-xxx.compute-1.amazonaws.com:5432/dbxxx    │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌─ JWT_SECRET (CRÍTICA) ────────────────────────────────────────────────────┐
+│                                                                            │
+│ Gere com:                                                               │
+│   openssl rand -hex 32                                                  │
+│                                                                            │
+│ Exemplo:                                                                │
+│   a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6                 │
+│                                                                            │
+│ ⚠️  IMPORTANTE: Ser único e diferente do desenvolvimento!               │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌─ FRONTEND_URL ────────────────────────────────────────────────────────────┐
+│                                                                            │
+│ Seu domínio do frontend no Vercel                                       │
+│ Exemplo: https://seu-ecommerce-frontend.vercel.app                     │
+│                                                                            │
+│ Sem a trailing slash!                                                   │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌─ SMTP_* (Email) ──────────────────────────────────────────────────────────┐
+│                                                                            │
+│ SMTP_HOST = smtp.gmail.com (ou seu provedor)                            │
+│ SMTP_PORT = 587                                                         │
+│ SMTP_USER = seu-email@gmail.com                                         │
+│ SMTP_PASS = [Senha de App Google, não senha da conta!]                 │
+│                                                                            │
+│ Para Gerar Senha de App Google:                                        │
+│ 1. https://myaccount.google.com/apppasswords                           │
+│ 2. Selecione: Mail e Windows                                           │
+│ 3. Copie a senha gerada (16 caracteres)                                │
+│                                                                            │
+│ ⚠️  IMPORTANTE: Não funciona com autenticação 2FA desativada!           │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+
+📋 ARQUIVO COMMITADO
+═══════════════════════════════════════════════════════════════════════════════
+
+VERCEL_ENV_SETUP.md
+  └─ Guia passo a passo detalhado
+  └─ Troubleshooting completo
+  └─ Exemplos por provedor de banco
+
+
+🔄 MUDANÇAS REALIZADAS
+═══════════════════════════════════════════════════════════════════════════════
+
+ANTES (vercel.json):
+{
+  "version": 2,
+  "builds": [...],
+  "routes": [...],
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "JWT_SECRET": "@jwt_secret",
+    ...
+  }
+}
+
+DEPOIS (vercel.json):
+{
+  "version": 2,
+  "builds": [...],
+  "routes": [...]
+}
+
+Razão: Variáveis devem ser configuradas no Vercel Dashboard,
+       não através de referências em vercel.json.
+
+
+✅ PRÓXIMOS PASSOS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Acesse Vercel Dashboard
+   https://vercel.com/dashboard/seu-projeto/settings/environment-variables
+
+2. Adicione as 8 variáveis (veja lista acima)
+
+3. Teste que a variável está lida
+   curl "https://seu-projeto.vercel.app/api/health"
+
+4. Se erro de banco, verifique:
+   └─ DATABASE_URL está correta
+   └─ Firewall do banco permite Vercel
+   └─ Banco está online
+
+
+🎯 COMMIT REALIZADO
+═══════════════════════════════════════════════════════════════════════════════
+
+Commit: 5bcbc39
+Mensagem: fix: remover referências de secrets e criar guia de env vars
+Alterações:
+  - vercel.json (removido seção env)
+  - VERCEL_ENV_SETUP.md (criado)
+  
+Status: ✅ READY TO PUSH
+
+
+📚 DOCUMENTAÇÃO
+═══════════════════════════════════════════════════════════════════════════════
+
+Para guia completo, consulte:
+  → VERCEL_ENV_SETUP.md (novo)
+  → VERCEL_DEPLOYMENT.md (existente)
+
+
+✨ RESUMO
+═══════════════════════════════════════════════════════════════════════════════
+
+O PROBLEMA:
+  vercel.json estava tentando usar secrets que não existem
+
+A SOLUÇÃO:
+  1. Remover "env" do vercel.json
+  2. Configurar variáveis no Vercel Dashboard
+  3. Fazer novo deploy
+
+RESULTADO:
+  ✅ Deployment vai funcionar agora!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 READY TO DEPLOY!
+
+Próximo passo: Configurar variáveis no Vercel Dashboard (5 minutos)
+
+═══════════════════════════════════════════════════════════════════════════════
