@@ -48,7 +48,7 @@ npm run setup
 ```
 
 **O que faz:**
-- Pergunta DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME
+- Pergunta DATABASE_URL (URL de conexão PostgreSQL completa)
 - **Gera JWT_SECRET automaticamente** ✨
 - Oferece opção Gmail ou Mailhog
 - Se não fornecer SMTP_PASS, **gera uma automaticamente** ✨
@@ -79,15 +79,13 @@ node init.js
     ↓
 [instala dependências]
     ↓
+[gera DATABASE_URL]
+    ↓
 [gera JWT_SECRET]
     ↓
 [gera SMTP_PASS]
     ↓
 [cria .env]
-    ↓
-[editar DB_PASSWORD]
-    ↓
-createdb frcomerce
     ↓
 npm run dev
     ↓

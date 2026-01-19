@@ -6,15 +6,12 @@ dotenv.config();
 const { Pool } = pg;
 
 const pool = new Pool({
-  user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 'postgres',
-  host: process.env.DB_HOST || 'localhost',
-  port: process.env.DB_PORT || 5432,
-  database: process.env.DB_NAME || 'frcomerce',
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+  
 });
 
-pool.on('error', (err) => {
-  console.error('Erro não previsto no pool', err);
-});
 
 export default pool;

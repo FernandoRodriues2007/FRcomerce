@@ -125,14 +125,31 @@ vercel.json             # Configuração Vercel
 Configurar no `.env`:
 
 ```env
-DB_HOST=seu_host
-DB_PORT=5432
-DB_USER=seu_usuario
-DB_PASSWORD=sua_senha
-DB_NAME=frcomerce
-JWT_SECRET=seu_secret_seguro
-FRONTEND_URL=sua_url_frontend
+# Banco de Dados (use a URL de conexão completa)
+DATABASE_URL=postgresql://usuario:senha@localhost:5432/frcomerce
+
+# Autenticação
+JWT_SECRET=seu_secret_seguro_aqui
+
+# Frontend
+FRONTEND_URL=http://localhost:3000
+
+# SMTP (Email)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=seu-email@gmail.com
+SMTP_PASS=sua-senha-app
+
+# Ambiente
 NODE_ENV=production
+PORT=3000
+```
+
+### Nota sobre DATABASE_URL no Vercel
+
+No Vercel, configure a variável `DATABASE_URL` com a URL de conexão do seu banco de dados PostgreSQL. Exemplo:
+```
+postgresql://usuario:senha@host:5432/banco
 ```
 
 ## 📝 Exemplo de Requisição

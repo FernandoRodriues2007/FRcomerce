@@ -80,11 +80,14 @@ async function main() {
 
     // Banco de Dados
     console.log(`${colors.bright}Database${colors.reset}`);
-    const dbHost = await lerEntrada('  DB_HOST (localhost): ') || 'localhost';
-    const dbPort = await lerEntrada('  DB_PORT (5432): ') || '5432';
-    const dbUser = await lerEntrada('  DB_USER (postgres): ') || 'postgres';
-    const dbPassword = await lerEntrada('  DB_PASSWORD: ');
-    const dbName = await lerEntrada('  DB_NAME (frcomerce): ') || 'frcomerce';
+    const databaseUrl = await lerEntrada('  DATABASE_URL (postgresql://postgres:password@localhost:5432/frcomerce): ') || 'postgresql://postgres:sua_senha@localhost:5432/frcomerce';
+    
+    // Extrair componentes para exibição
+    const urlObj = new URL(databaseUrl);
+    const dbHost = urlObj.hostname;
+    const dbPort = urlObj.port || '5432';
+    const dbUser = urlObj.username;
+    const dbName = urlObj.pathname.substring(1);
 
     console.log();
 
@@ -135,11 +138,7 @@ async function main() {
 # Gerado automaticamente em ${new Date().toLocaleString('pt-BR')}
 
 ## Banco de Dados PostgreSQL
-DB_HOST=${dbHost}
-DB_PORT=${dbPort}
-DB_USER=${dbUser}
-DB_PASSWORD=${dbPassword}
-DB_NAME=${dbName}
+DATABASE_URL=${databaseUrl}
 
 ## JWT Secret (mude isto em produção!)
 JWT_SECRET=${jwtSecret}
@@ -164,6 +163,7 @@ PORT=${port}
 
         console.log(`${colors.bright}📋 Resumo:${colors.reset}`);
         console.log(`  Database: ${dbUser}@${dbHost}:${dbPort}/${dbName}`);
+        console.log(`  DATABASE_URL: ${databaseUrl.substring(0, 50)}...`);
         console.log(`  JWT Secret: ${jwtSecret.substring(0, 10)}...`);
         console.log(`  Email: ${emailOpcao.toLowerCase() === 's' ? 'Gmail' : 'Mailhog (testes)'}`);
         console.log(`  Frontend URL: ${frontendUrl}`);
