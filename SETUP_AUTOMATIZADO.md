@@ -94,11 +94,8 @@ Você vai ver:
 📝 Configure as variáveis de ambiente:
 
 Database
-  DB_HOST (localhost): [ENTER]
-  DB_PORT (5432): [ENTER]
-  DB_USER (postgres): [ENTER]
-  DB_PASSWORD: sua_senha
-  DB_NAME (frcomerce): [ENTER]
+  DATABASE_URL (postgresql://postgres:password@localhost:5432/frcomerce): 
+  postgresql://postgres:sua_senha@localhost:5432/frcomerce
 
 Segurança
   ✓ JWT_SECRET gerado automaticamente

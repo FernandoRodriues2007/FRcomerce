@@ -74,11 +74,8 @@ async function main() {
 # Gerado automaticamente em ${new Date().toLocaleString('pt-BR')}
 
 ## Banco de Dados PostgreSQL
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=postgres
-DB_PASSWORD=sua_senha_do_postgres
-DB_NAME=frcomerce
+# URL de conexão completa (substitua com suas credenciais)
+DATABASE_URL=postgresql://postgres:sua_senha@localhost:5432/frcomerce
 
 ## JWT Secret (gerado automaticamente)
 JWT_SECRET=${jwtSecret}
@@ -109,10 +106,11 @@ PORT=3000
             
             fs.writeFileSync(envPath, envContent);
             log(`✅ Arquivo .env criado`, 'green');
+            log(`   DATABASE_URL: postgresql://postgres:***@localhost:5432/frcomerce`, 'gray');
             log(`   JWT_SECRET: ${jwtSecret.substring(0, 10)}...`, 'gray');
             log(`   SMTP_PASS: ${senhaApp}`, 'gray');
             log(`\n⚠️  IMPORTANTE: Edite api/.env e configure:`, 'yellow');
-            log(`   - DB_PASSWORD (sua senha PostgreSQL)`, 'yellow');
+            log(`   - DATABASE_URL (sua connection string PostgreSQL)`, 'yellow');
             log(`   - SMTP_USER (seu email Gmail ou remova para usar Mailhog)`, 'yellow');
         } else {
             log('✓ Arquivo .env já existe', 'green');

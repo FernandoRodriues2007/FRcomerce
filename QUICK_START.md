@@ -95,17 +95,22 @@ cd api && npm start
 ## 🔑 Variáveis .env (Auto-Geradas)
 
 ```env
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=postgres
-DB_PASSWORD=SUA_SENHA
-DB_NAME=frcomerce
+# Banco de Dados (URL de conexão completa)
+DATABASE_URL=postgresql://postgres:sua_senha@localhost:5432/frcomerce
 
-JWT_SECRET=xxx (gerado)
-SMTP_PASS=xxx (gerado)
+# Segurança
+JWT_SECRET=xxx (gerado automaticamente)
+
+# Email (Recuperação de Senha)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
 SMTP_USER=seu-email@gmail.com
+SMTP_PASS=xxx (gerado automaticamente)
 
+# Frontend
 FRONTEND_URL=http://localhost:3000
+
+# Ambiente
 NODE_ENV=development
 PORT=3000
 ```
@@ -115,11 +120,11 @@ PORT=3000
 ## ✅ Checklist de Setup
 
 - [ ] `node init.js` executado
-- [ ] `api/.env` editado (DB_PASSWORD, SMTP_USER)
+- [ ] `api/.env` editado (DATABASE_URL, SMTP_USER)
 - [ ] `createdb frcomerce` executado
 - [ ] Schema SQL importado
 - [ ] `npm run dev` rodando na pasta `api/`
-- [ ] Frontend acessível em http://localhost:3000
+- [ ] API respondendo em http://localhost:3000/api/health
 
 ---
 

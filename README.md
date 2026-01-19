@@ -24,7 +24,7 @@ psql -U postgres -d frcomerce -f api/config/schema.sql
 ### **3. Editar `.env`**
 ```bash
 # Abra api/.env e configure:
-DB_PASSWORD=sua_senha_postgres
+DATABASE_URL=postgresql://postgres:sua_senha@localhost:5432/frcomerce
 SMTP_USER=seu-email@gmail.com  (ou deixe localhost para Mailhog)
 ```
 
