@@ -1,0 +1,270 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║         ✅ ERRO DE CONEXÃO API RESOLVIDO - CRIAR CONTA FUNCIONA ✅        ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+🔴 PROBLEMA INICIAL
+═══════════════════════════════════════════════════════════════════════════════
+
+Ao clicar em "Criar Conta", o frontend exibia erro:
+  "Erro ao conectar com o servidor. Verifique se a API está rodando."
+
+Mesmo com a API funcionando corretamente.
+
+
+❌ CAUSA RAIZ
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Arquivos JavaScript do frontend usavam URL hardcoded:
+   const API_URL = 'http://localhost:3000/api'
+
+2. O servidor Node não estava servindo os arquivos estáticos HTML/CSS/JS
+   └─ O frontend e API precisam estar no mesmo servidor
+
+3. CORS estava falhando porque origens não correspondiam
+
+
+✅ SOLUÇÃO IMPLEMENTADA
+═══════════════════════════════════════════════════════════════════════════════
+
+1. MODIFICADO: server.js
+   ├─ Adicionar importação: path, fileURLToPath
+   ├─ Adicionar: app.use(express.static(path.join(__dirname, 'E-comerc')))
+   └─ Agora serve arquivos HTML/CSS/JS da pasta E-comerc/
+
+2. ATUALIZADO: Todos os arquivos JS do frontend
+   ├─ criarconta.js
+   ├─ login.js
+   ├─ auth.js
+   ├─ recuperarSenha.js
+   ├─ resetarSenha.js
+   └─ api-client.js
+   
+   Mudança:
+   DE:  const API_URL = 'http://localhost:3000/api'
+   PARA: const API_URL = '/api'  ← URL relativa
+   
+   Benefício: Funciona em qualquer host:porta
+
+
+🔧 MUDANÇAS TÉCNICAS
+═══════════════════════════════════════════════════════════════════════════════
+
+ARQUIVO: server.js
+───────────────────
+
+ANTES:
+```javascript
+import express from 'express';
+import cors from 'cors';
+// ... sem path
+
+// Middlewares
+app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:3000', ...}));
+app.use(express.json());
+
+// Direto para rotas da API
+app.use('/api/auth', authRoutes);
+```
+
+DEPOIS:
+```javascript
+import express from 'express';
+import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// Middlewares
+app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:3000', ...}));
+app.use(express.json());
+
+// 👇 NOVO: Servir arquivos estáticos
+app.use(express.static(path.join(__dirname, 'E-comerc')));
+
+// Rotas da API
+app.use('/api/auth', authRoutes);
+```
+
+
+ARQUIVOS JS DO FRONTEND (exemplo: criarconta.js)
+─────────────────────────────────────────────────
+
+ANTES:
+```javascript
+const API_URL = 'http://localhost:3000/api';
+```
+
+DEPOIS:
+```javascript
+const API_URL = '/api';
+```
+
+Quando o HTML está em http://localhost:3000/criarconta.html
+A URL '/api' resolve para http://localhost:3000/api automaticamente!
+
+
+🚀 COMO USAR AGORA
+═══════════════════════════════════════════════════════════════════════════════
+
+PASSO 1: Iniciar a API (tudo em um servidor)
+────────────────────────────────────────────────
+$ cd api
+$ npm run dev
+
+✅ Agora o servidor Node:
+   • Serve a API em http://localhost:3000/api
+   • Serve o frontend em http://localhost:3000/
+
+
+PASSO 2: Acessar o frontend
+────────────────────────────────
+Abra no navegador:
+  http://localhost:3000
+  
+✅ Você verá:
+   • index.html (página inicial)
+   • Login
+   • Criar Conta
+   • Produtos
+   • etc
+
+
+PASSO 3: Criar Conta
+────────────────────────────────
+1. Clique em "Criar Conta"
+2. Preencha: nome, email, senha
+3. Clique em "Criar Conta"
+4. ✅ Deve redirecionar para login!
+
+
+🧪 TESTES PARA VALIDAR
+═══════════════════════════════════════════════════════════════════════════════
+
+Teste 1: API respondendo?
+────────────────────────────────
+$ curl http://localhost:3000/api/health
+Response:
+  {"status":"OK","message":"API está funcionando"}
+
+
+Teste 2: Frontend sendo servido?
+────────────────────────────────
+$ curl http://localhost:3000
+Response:
+  (HTML da página principal)
+
+
+Teste 3: Criar conta pelo CLI?
+────────────────────────────────
+$ curl -X POST http://localhost:3000/api/auth/registrar \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nome": "Teste",
+    "email": "teste@example.com",
+    "senha": "123456"
+  }'
+
+Response (sucesso):
+  {
+    "mensagem": "Usuário criado com sucesso",
+    "usuario": { "id": "...", "email": "teste@example.com", ... },
+    "token": "eyJ..."
+  }
+
+
+Teste 4: Criar conta pelo navegador?
+────────────────────────────────────
+1. Abra http://localhost:3000
+2. Vá para "Criar Conta"
+3. Preencha formulário
+4. Clique "Criar Conta"
+5. ✅ Deve aparecer sucesso ou erro específico
+
+
+📋 MUDANÇAS EM GIT
+═══════════════════════════════════════════════════════════════════════════════
+
+Commit: fix: corrigir conexão API - servir frontend e URLs relativas
+
+Arquivos modificados:
+  ✏️  server.js                        (+ 3 importações, + 1 middleware)
+  ✏️  E-comerc/assets/js/criarconta.js (1 linha alterada)
+  ✏️  E-comerc/assets/js/login.js      (1 linha alterada)
+  ✏️  E-comerc/assets/js/auth.js       (1 linha alterada)
+  ✏️  E-comerc/assets/js/recuperarSenha.js (1 linha alterada)
+  ✏️  E-comerc/assets/js/resetarSenha.js (1 linha alterada)
+  ✏️  E-comerc/assets/js/api-client.js (1 linha alterada)
+  ✨ CONEXAO_API_FIX.md                (novo guia)
+
+
+✅ CHECKLIST
+═══════════════════════════════════════════════════════════════════════════════
+
+Verifier:
+  ☑️ server.js serve arquivos estáticos
+  ☑️ Todos os arquivos JS usam URLs relativas
+  ☑️ CORS configurado
+  ☑️ Database conectado
+  ☑️ npm run dev funciona
+  ☑️ http://localhost:3000 acessível
+  ☑️ Criar conta redireciona para login
+  ☑️ Login funciona
+  ☑️ Ver produtos funciona
+
+
+🎯 ARQUITETURA FINAL
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────┐
+│                                                                 │
+│  Cliente (Navegador)                                           │
+│  http://localhost:3000/criarconta.html                         │
+│           │                                                    │
+│           ├─ Carrega: criarconta.js                           │
+│           │  const API_URL = '/api'                           │
+│           │                                                    │
+│           └─ POST /api/auth/registrar                         │
+│                    │                                           │
+├────────────────────┼──────────────────────────────────────────┤
+│                    │                                           │
+│     Servidor Node (server.js)                                 │
+│     http://localhost:3000                                     │
+│                    │                                           │
+│   Roteador Express │                                           │
+│        ├── GET / → serve index.html                           │
+│        ├── GET /criarconta.html → serve criarconta.html       │
+│        ├── GET /assets/js/* → serve JS                        │
+│        │                                                       │
+│        └── POST /api/auth/registrar → authController          │
+│                    │                                           │
+│                    └─ Validações                              │
+│                    └─ Hash senha                              │
+│                    └─ Salvar no banco                         │
+│                    └─ Gerar token                             │
+│                    └─ Retornar resposta                       │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+
+
+📝 RESUMO
+═══════════════════════════════════════════════════════════════════════════════
+
+PROBLEMA: Frontend não conseguia conectar na API
+CAUSA: URLs hardcoded e frontend não sendo servido
+SOLUÇÃO: Servir frontend estático + URLs relativas
+RESULTADO: ✅ Criar conta funciona!
+
+Uma única linha de comando:
+  npm run dev
+  
+Acesso único:
+  http://localhost:3000
+
+Tudo funciona junto! 🎉
+
+
+═══════════════════════════════════════════════════════════════════════════════
