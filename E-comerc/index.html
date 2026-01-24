@@ -9,65 +9,38 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-400 ">
-    <header
-        class="text-white p-4 flex justify-between  items-center shadow-md  fixed w-full bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-400 ">
-        <h1 class=" font-bold text-md xl:text-3xl"><i class="fa fa-cart-plus" aria-hidden="true"></i> FRcomerce</h1>
+<body class="bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-400">
+    <header class="text-white p-4 md:p-6 flex justify-between items-center shadow-lg fixed w-full z-50 bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-400">
+        <h1 class="font-bold text-xl md:text-2xl lg:text-3xl"><i class="fa fa-cart-plus" aria-hidden="true"></i> FRcomerce</h1>
 
-        <div class="flex space-x-8 self-center hidden  xl:block " id="navbar">
-            <a href="#Inicio" class="hover:underline text-sm xl:text-1xl">Inicio</a>
-            <a href="#serviços" class="hover:underline text-sm xl:text-1xl">Serviços</a>
-            <a href="#Promoções" class="hover:underline text-sm xl:text-1xl">Promoções</a>
-            <a href="#sobre" class="hover:underline text-sm xl:text-1xl">Sobre</a>
-            <a href="#contacto" class="hover:underline text-sm xl:text-1xl">Contato</a>
-        </div>
+        <nav class="flex space-x-4 md:space-x-8 self-center hidden lg:flex text-center" id="navbar">
+            <a href="#Inicio" class="hover:underline text-sm lg:text-base">Inicio</a>
+            <a href="#serviços" class="hover:underline text-sm lg:text-base">Serviços</a>
+            <a href="#Promoções" class="hover:underline text-sm lg:text-base">Promoções</a>
+            <a href="#sobre" class="hover:underline text-sm lg:text-base">Sobre</a>
+            <a href="#contacto" class="hover:underline text-sm lg:text-base">Contato</a>
+        </nav>
 
-        <div class="gap-2 " id="divbuton">
-            <button class="text-blue-600 bg-white px-2 py-1 text-sm xl:px-4 xl:py-2 rounded-md hover:bg-gray-200 transition duration-300" onclick="location.href='login.html'"> Entrar </button>
-            <button class="text-blue-600  bg-white px-2 py-1 text-sm xl:px-4 xl:py-2 rounded-md hover:bg-gray-200 transition duration-300" onclick="location.href='criarconta.html'">Criar conta</button>
+        <div class="flex gap-2 md:gap-3 items-center" id="divbuton">
+            <button class="text-blue-600 bg-white px-2 py-1 md:px-4 md:py-2 text-xs md:text-sm rounded-md hover:bg-gray-200 transition duration-300" onclick="location.href='login.html'">Entrar</button>
+            <button class="text-blue-600 bg-white px-2 py-1 md:px-4 md:py-2 text-xs md:text-sm rounded-md hover:bg-gray-200 transition duration-300" onclick="location.href='criarconta.html'">Criar conta</button>
         </div>
-        <button class="text-white xl:hidden  " onclick="menu()">
+        <button class="text-white lg:hidden ml-4" onclick="menu()">
             <i class="fa fa-bars text-2xl" id="icon" aria-hidden="true"></i>
         </button>
     </header>
-    <main class="grid grid-cols-1 bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-400">
-        <section class=" flex justify-center" id="Inicio">
-            <div class="relative w-full h-screen overflow-hidden">
-                <!-- Vídeo de fundo -->
-                <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover">
-                    <source src="https://videos.pexels.com/video-files/3045163/3045163-sd_640_360_30fps.mp4" type="video/mp4">
-                    Seu navegador não suporta vídeos HTML5.
-                </video>
-                
-                <!-- Overlay escuro para melhor legibilidade -->
-                <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40"></div>
+    <main class="grid grid-cols-1 bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-400 pt-20">
+        <section class="flex justify-center w-full" id="Inicio">
+            <div class="relative w-full min-h-screen flex items-center bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=1600&h=800&fit=crop'); background-attachment: fixed;">
                 
                 <!-- Conteúdo -->
-                <div class="relative z-10 flex flex-col justify-center items-center h-full text-center text-white px-4">
-                    <h2 class="text-5xl sm:text-6xl font-bold mb-4 drop-shadow-lg">Bem-vindo à FRcomerce</h2>
-                    <p class="text-xl sm:text-2xl mb-8 drop-shadow-md">Descubra nossos incríveis produtos e serviços</p>
-                    <p class="text-lg sm:text-xl max-w-2xl drop-shadow-md">A melhor experiência de compras online com garantia de qualidade e segurança</p>
-                </div>
-            </div>
-
-            <div class=" hidden w-full grid sm:grid-cols-1 mt-1 text-center place-items-center py-48  " id="Descrição">
-                <div class="w-1/2 text-white flex justify-center items-center flex-col  px-20 my-20 sm:px-4 sm:my-4 sm:w-full">
-                    <h2 class="text-md xl:text-4xl font-bold mb-4 ">FRcomerce</h2>
-                    <p class="text-sm xl:text-2xl mb-2  font-bold">Sua plataforma definitiva para compras online. Explore uma vasta
-                        gama de
-                        produtos e serviços, tudo em um só lugar.</p>
-                    <p class="text-sm xl:text-2xl mb-8 mt-2">Descubra ofertas exclusivas, navegue por categorias variadas e
-                        aproveite uma
-                        experiência de compra segura e conveniente conosco.
-
-                    </p>
-                    <button
-                        class="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow-md hover:bg-gray-200 transition duration-300">Explorar
-                        Produtos</button>
-                </div>
-                <div class="w-1/2  flex justify-center items-center px-20 my-20 sm:px-4 sm:my-4 sm:w-full">
-                    <img src="assets/img/Promoção.png" alt="" class="w-full  ">
-
+                <div class="flex flex-col justify-center items-center w-full h-full text-center text-white px-4 py-12">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-lg">Bem-vindo à FRcomerce</h2>
+                    <p class="text-lg sm:text-xl md:text-2xl mb-6 drop-shadow-md">Descubra nossos incríveis produtos e serviços</p>
+                    <p class="text-base sm:text-lg md:text-xl max-w-2xl drop-shadow-md mb-8">A melhor experiência de compras online com garantia de qualidade e segurança</p>
+                    <button onclick="document.getElementById('serviços').scrollIntoView({behavior:'smooth'})" class="px-6 md:px-8 py-3 md:py-4 bg-white text-blue-600 font-bold rounded-lg shadow-lg hover:bg-gray-100 transition duration-300 text-sm md:text-base">
+                        Explorar Produtos
+                    </button>
                 </div>
             </div>
         </section>
@@ -140,6 +113,92 @@
                 </div>
             </div>
 
+        </section>
+
+        <section class="py-16 md:py-24 lg:py-32 flex justify-center items-center bg-white" id="sobre">
+            <div class="w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">Sobre Nós</h2>
+                    <p class="text-gray-600 text-base sm:text-lg">Conheça a história e os valores da FRcomerce</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <!-- Conteúdo -->
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-600 mb-3">Quem Somos</h3>
+                            <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
+                                A FRcomerce é uma plataforma inovadora de comércio eletrônico dedicada a oferecer a melhor experiência de compras online. Com uma visão clara de transformar o mercado digital, nos empenhamos em conectar consumidores com produtos de qualidade, a preços acessíveis e com excelente atendimento.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-600 mb-3">Nossa Missão</h3>
+                            <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
+                                Tornar as compras online acessíveis, seguras e agradáveis para todos, oferecendo produtos variados com qualidade garantida e um atendimento ao cliente excepcional. Acreditamos que cada cliente merece uma experiência personalizada e confiável.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-600 mb-3">Nossa Visão</h3>
+                            <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
+                                Ser a plataforma de e-commerce mais confiável, inovadora e orientada ao cliente em Angola e na região, reconhecida pela qualidade de seus produtos e excelência no serviço.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Valores -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                            <div class="text-4xl mb-3">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Confiança</h4>
+                            <p class="text-sm text-blue-100">Transparência e segurança em cada transação</p>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-cyan-500 to-cyan-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                            <div class="text-4xl mb-3">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Qualidade</h4>
+                            <p class="text-sm text-cyan-100">Produtos selecionados e revisados com cuidado</p>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-teal-500 to-teal-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                            <div class="text-4xl mb-3">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Atendimento</h4>
+                            <p class="text-sm text-teal-100">Suporte disponível para resolver suas dúvidas</p>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                            <div class="text-4xl mb-3">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Inovação</h4>
+                            <p class="text-sm text-green-100">Tecnologia de ponta para melhor experiência</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estatísticas -->
+                <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+                    <div class="text-center p-6 bg-gray-50 rounded-lg">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">10K+</div>
+                        <p class="text-gray-700 font-semibold">Clientes Satisfeitos</p>
+                    </div>
+                    <div class="text-center p-6 bg-gray-50 rounded-lg">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">500+</div>
+                        <p class="text-gray-700 font-semibold">Produtos Disponíveis</p>
+                    </div>
+                    <div class="text-center p-6 bg-gray-50 rounded-lg">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">24/7</div>
+                        <p class="text-gray-700 font-semibold">Atendimento Online</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="py-40 flex flex-col justify-center items-center gap-4 w-full " id="Promoções">

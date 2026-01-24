@@ -9,70 +9,63 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="flex bg-gray-100 gap-60">
-    <div class="flex-h-screen hidden xl:block" id="divside">
-
-        <aside class="w-60 h-screen     fixed bg-blue-600 text-white  flex flex-col gap-8 " id="sidebar">
-            <div class="text-center mt-8">
+<body class="flex flex-col lg:flex-row bg-gray-100">
+    <div class="hidden lg:block" id="divside">
+        <aside class="w-60 h-screen fixed bg-gradient-to-b from-blue-700 to-blue-900 text-white flex flex-col gap-6" id="sidebar">
+            <div class="text-center mt-8 px-4">
                 <h1 class="text-2xl font-bold"><i class="fa fa-cart-plus" aria-hidden="true"></i> FRcomerce</h1>
             </div>
-            <nav class="p-4  flex flex-col gap-4" id="nav">
-
-                <button  data-page="dashboard" class="text-start hover:bg-blue-700 p-2 rounded  item">
-                    <i class="fa fa-dashboard" aria-hidden="true"></i> Dashboard
+            <nav class="p-4 flex flex-col gap-3" id="nav">
+                <button data-page="dashboard" class="text-start hover:bg-blue-600 p-3 rounded font-semibold item transition">
+                    <i class="fa fa-dashboard mr-3" aria-hidden="true"></i> Dashboard
                 </button>
-
-                <button data-page="produtos" class="text-start hover:bg-blue-700 p-2 rounded  item">
-                    <i class="fa fa-box-open" aria-hidden="true"></i>
-                    Produtos
+                <button data-page="produtos" class="text-start hover:bg-blue-600 p-3 rounded font-semibold item transition">
+                    <i class="fa fa-box-open mr-3" aria-hidden="true"></i> Produtos
                 </button>
-
-                <button data-page="categorias" class="text-start hover:bg-blue-700 p-2 rounded   item">
-                    <i class="fa fa-list" aria-hidden="true"></i>
-                    Categórias
+                <button data-page="categorias" class="text-start hover:bg-blue-600 p-3 rounded font-semibold item transition">
+                    <i class="fa fa-list mr-3" aria-hidden="true"></i> Categórias
                 </button>
-
-                <button data-page="pedidos" class="text-start hover:bg-blue-700 p-2 rounded  item">
-                    <i class="fa fa-shopping-bag" aria-hidden="true"></i> Meus Pedidos
+                <button data-page="pedidos" class="text-start hover:bg-blue-600 p-3 rounded font-semibold item transition">
+                    <i class="fa fa-shopping-bag mr-3" aria-hidden="true"></i> Meus Pedidos
                 </button>
-
-                <button data-page="detalhes_produtos" class="text-start hover:bg-blue-700 p-2 rounded  item">
-                    <i class="fa fa-circle-info" aria-hidden="true"></i> Detalhes do Produto
+                <button data-page="detalhes_produtos" class="text-start hover:bg-blue-600 p-3 rounded font-semibold item transition">
+                    <i class="fa fa-circle-info mr-3" aria-hidden="true"></i> Detalhes do Produto
                 </button>
-
-                <button data-page="configuracoes" class="text-start hover:bg-blue-700 p-2 rounded  item">
-                    <i class="fa fa-gear" aria-hidden="true"></i> Configurações
+                <button data-page="configuracoes" class="text-start hover:bg-blue-600 p-3 rounded font-semibold item transition">
+                    <i class="fa fa-gear mr-3" aria-hidden="true"></i> Configurações
                 </button>
-
-
-                <button onclick="window.location.href='index.html'" class="text-start hover:bg-blue-700 p-2 rounded item">
-                    <i class="fa fa-sign-out" aria-hidden="true"> </i> Sair 
+                <hr class="border-blue-500 my-2">
+                <button onclick="window.location.href='index.html'" class="text-start hover:bg-red-600 p-3 rounded font-semibold item transition">
+                    <i class="fa fa-sign-out mr-3" aria-hidden="true"></i> Sair 
                 </button>
-
             </nav>
         </aside>
     </div>
-    <div class="flex-1">
-        <header class="flex items-center justify-between bg-white px-6 py-4 border-b">
-        <div class="flex items-center gap-4">
-          <button class="md:hidden p-2 rounded-md bg-gray-100">☰</button>
-          <h2 class="text-lg font-semibold">Dashboard</h2>
-        </div>
-        <div class="flex items-center gap-4">
-          <div class="hidden sm:block">
-            <input type="search" placeholder="Pesquisar..." class="px-3 py-2 border rounded-md text-sm outline-blue-600" />
-          </div>
-          <div class="flex items-center gap-3">
-            <img src="assets/img/estevão.jfif" alt="avatar" class="w-8 h-8 rounded-full object-cover" />
-            <div class="text-sm">
-              <div class="font-medium">Administrador</div>
-              <div class="text-gray-500">Fernando Rodrigues</div>
+    
+    <div class="flex-1 flex flex-col lg:ml-60">
+        <header class="flex flex-col sm:flex-row items-center justify-between bg-white px-4 sm:px-6 py-4 border-b shadow-sm gap-4">
+            <div class="flex items-center gap-4 w-full sm:w-auto">
+                <button class="lg:hidden p-2 rounded-md bg-gray-100 hover:bg-gray-200" onclick="menu()">
+                    <i class="fa fa-bars text-xl" id="icon" aria-hidden="true"></i>
+                </button>
+                <h2 class="text-lg sm:text-xl font-bold text-gray-800">Dashboard</h2>
             </div>
-          </div>
-        </div>
-      </header>
-        <hr class="w-full text-1xl text-white">
-        <main class="p-6" id="main">
+            
+            <div class="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-end">
+                <div class="hidden sm:block">
+                    <input type="search" placeholder="Pesquisar..." class="px-4 py-2 border-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+                <div class="flex items-center gap-3">
+                    <img src="assets/img/estevão.jfif" alt="avatar" class="w-10 h-10 rounded-full object-cover" />
+                    <div class="text-sm text-center sm:text-left">
+                        <div class="font-semibold text-gray-800">Administrador</div>
+                        <div class="text-gray-500">Fernando Rodrigues</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main class="flex-1 p-4 sm:p-6 overflow-auto" id="main">
             
         </main>
     </div>
@@ -225,33 +218,33 @@ var page={
     `,
 
     produtos: `
-    <section class="mx-auto rounded p-8 w-full md:p-4">
-        <div class="mb-6">
-            <h2 class="text-3xl font-bold text-gray-800">Nossos Produtos</h2>
-            <p class="text-gray-600 mt-2">Descubra nossa coleção completa de produtos de qualidade</p>
+    <section class="rounded p-4 sm:p-6 md:p-8 w-full">
+        <div class="mb-8 text-center">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">Nossos Produtos</h2>
+            <p class="text-gray-600 mt-2 text-sm sm:text-base">Descubra nossa coleção completa de produtos de qualidade</p>
         </div>
         
-        <div class="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 w-full mx-auto place-items-center">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 w-full">
             
             <!-- Produto 1 -->
-            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+            <div class="group w-full h-80 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-44 bg-gray-200 overflow-hidden">
                     <img src="assets/img/close-up-em-tenis-futuristas.jpg" alt="Tênis Futurista" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                    <div class="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold">-15%</div>
+                    <div class="absolute top-3 right-3 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-bold">-15%</div>
                 </div>
-                <div class="p-4 flex flex-col justify-between h-[160px]">
+                <div class="p-4 flex flex-col justify-between h-36">
                     <div>
-                        <h3 class="font-bold text-gray-800 mb-1">Tênis Futurista</h3>
-                        <p class="text-xs text-gray-500 mb-2">Categoria: Calçados</p>
-                        <p class="text-sm text-gray-600">Tênis moderno e confortável</p>
+                        <h3 class="font-bold text-gray-800 mb-1 text-sm sm:text-base">Tênis Futurista</h3>
+                        <p class="text-xs text-gray-500 mb-1">Categoria: Calçados</p>
+                        <p class="text-xs sm:text-sm text-gray-600">Tênis moderno e confortável</p>
                     </div>
-                    <div class="flex justify-between items-end">
-                        <span class="text-lg font-bold text-blue-600">R$ 99,99</span>
+                    <div class="flex justify-between items-center gap-2">
+                        <span class="text-base sm:text-lg font-bold text-blue-600">R$ 99,99</span>
                         <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
                             <i class="fas fa-cart-plus"></i>
                         </button>
                     </div>
-                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-xs font-semibold mt-2">
                         Ver Detalhes
                     </button>
                 </div>
@@ -424,6 +417,536 @@ var page={
                     </button>
                 </div>
             </div>
+
+            <!-- Produto 9 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/electrodomesticos.jfif" alt="Geladeira" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-cyan-600 text-white px-3 py-1 rounded-full text-xs font-bold">-18%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Geladeira Smart</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Eletrodomésticos</p>
+                        <p class="text-sm text-gray-600">Tecnologia inteligente</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 199,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 10 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/electronicos.jfif" alt="Smartphone" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold">-12%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Smartphone 5G</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Eletrônicos</p>
+                        <p class="text-sm text-gray-600">Câmera Ultra HD</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 149,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 11 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/aprelhos_electrónicos.jfif" alt="Tablet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-teal-600 text-white px-3 py-1 rounded-full text-xs font-bold">-22%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Tablet Premium</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Eletrônicos</p>
+                        <p class="text-sm text-gray-600">Tela de alta resolução</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 129,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 12 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/calçados.jfif" alt="Botas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-amber-600 text-white px-3 py-1 rounded-full text-xs font-bold">-14%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Botas de Couro</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Calçados</p>
+                        <p class="text-sm text-gray-600">Conforto e durabilidade</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 119,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 13 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/construção.jfif" alt="Ferramentas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-slate-600 text-white px-3 py-1 rounded-full text-xs font-bold">-8%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Kit Ferramentas</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Construção</p>
+                        <p class="text-sm text-gray-600">50 peças profissionais</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 89,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 14 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/entrega+.jfif" alt="Bicicleta" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-lime-600 text-white px-3 py-1 rounded-full text-xs font-bold">-16%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Bicicleta Mountain</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Esportes</p>
+                        <p class="text-sm text-gray-600">Aro 29 com suspensão</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 159,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 15 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/camião.jfif" alt="Drone" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-violet-600 text-white px-3 py-1 rounded-full text-xs font-bold">New</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Drone 4K</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Eletrônicos</p>
+                        <p class="text-sm text-gray-600">Câmera 4K ultra-estável</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 179,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 16 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/download.jfif" alt="Mochila" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-rose-600 text-white px-3 py-1 rounded-full text-xs font-bold">-11%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Mochila Trekking</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Acessórios</p>
+                        <p class="text-sm text-gray-600">75L resistente à água</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 109,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 17 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/aprelhos_electrónicos.jfif" alt="Notebook" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-indigo-600 text-white px-3 py-1 rounded-full text-xs font-bold">-19%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Notebook Gamer</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Eletrônicos</p>
+                        <p class="text-sm text-gray-600">RTX 4060, 16GB RAM</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 189,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 18 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/electronicos.jfif" alt="Monitor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-cyan-600 text-white px-3 py-1 rounded-full text-xs font-bold">-13%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Monitor 4K 32"</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Eletrônicos</p>
+                        <p class="text-sm text-gray-600">120Hz IPS display</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 139,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 19 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/calçados.jfif" alt="Sapatênis" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold">-17%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Sapatênis Sport</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Calçados</p>
+                        <p class="text-sm text-gray-600">Leve e respirável</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 85,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 20 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/aprelhos_electrónicos.jfif" alt="Câmera" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold">-24%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Câmera Digital</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Eletrônicos</p>
+                        <p class="text-sm text-gray-600">20MP com zoom 10x</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 169,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 21 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/electrodomesticos.jfif" alt="Micro-ondas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-bold">-9%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Micro-ondas Smart</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Eletrodomésticos</p>
+                        <p class="text-sm text-gray-600">30L com controle WiFi</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 129,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 22 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/electronicos.jfif" alt="Smartwatch" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-bold">New</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Smartwatch Fit</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Eletrônicos</p>
+                        <p class="text-sm text-gray-600">Monitor cardíaco integrado</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 109,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 23 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/construção.jfif" alt="Furadeira" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">-7%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Furadeira Profissional</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Construção</p>
+                        <p class="text-sm text-gray-600">Bateria recarregável 20V</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 95,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 24 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/entrega+.jfif" alt="Patinete" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-sky-600 text-white px-3 py-1 rounded-full text-xs font-bold">-20%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Patinete Elétrico</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Esportes</p>
+                        <p class="text-sm text-gray-600">Alcance 40km bateria</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 149,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 25 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/aprelhos_electrónicos.jfif" alt="Powerbank" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-yellow-600 text-white px-3 py-1 rounded-full text-xs font-bold">-6%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Power Bank 50000mAh</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Acessórios</p>
+                        <p class="text-sm text-gray-600">Carregamento ultra rápido</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 59,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 26 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/electrodomesticos.jfif" alt="Ventilador" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold">-5%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Ventilador Inteligente</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Eletrodomésticos</p>
+                        <p class="text-sm text-gray-600">Controle por aplicativo</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 75,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 27 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/electronicos.jfif" alt="Caixa Som" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-pink-600 text-white px-3 py-1 rounded-full text-xs font-bold">-15%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Caixa Som Bluetooth</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Eletrônicos</p>
+                        <p class="text-sm text-gray-600">À prova d'água 360°</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 79,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 28 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/download.jfif" alt="Mala" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-teal-600 text-white px-3 py-1 rounded-full text-xs font-bold">-12%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Mala Viagem Inteligente</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Acessórios</p>
+                        <p class="text-sm text-gray-600">Com rastreamento GPS</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 139,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 29 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/aprelhos_electrónicos.jfif" alt="Teclado" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-indigo-600 text-white px-3 py-1 rounded-full text-xs font-bold">-10%</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Teclado Mecânico RGB</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Eletrônicos</p>
+                        <p class="text-sm text-gray-600">Switches Blue mecânicos</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 89,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produto 30 -->
+            <div class="group w-[220px] h-[340px] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div class="relative h-[180px] bg-gray-200 overflow-hidden">
+                    <img src="assets/img/electronicos.jfif" alt="Mouse" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute top-3 right-3 bg-rose-600 text-white px-3 py-1 rounded-full text-xs font-bold">New</div>
+                </div>
+                <div class="p-4 flex flex-col justify-between h-[160px]">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-1">Mouse Gamer Wireless</h3>
+                        <p class="text-xs text-gray-500 mb-2">Categoria: Eletrônicos</p>
+                        <p class="text-sm text-gray-600">16000 DPI ajustável</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-bold text-blue-600">R$ 69,99</span>
+                        <button class="bg-blue-600 text-white rounded-lg p-2 hover:bg-blue-700 transition text-xs">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition text-sm font-semibold mt-2">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            
         </div>
     </section>
     `,
