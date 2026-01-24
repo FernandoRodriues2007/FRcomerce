@@ -6,24 +6,242 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRcomerce - Página Inicial</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Animação de typewriter (digitação) */
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-right-color: transparent;
+            }
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid rgba(255, 255, 255, 0.7);
+            white-space: nowrap;
+            animation: typewriter 3.5s steps(40, end), blink 0.75s step-end infinite;
+            display: inline-block;
+        }
+
+        /* Animação de fade-in */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .fade-in-up:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .fade-in-up:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .fade-in-up:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        /* Animação de slide-in */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in-down {
+            animation: slideInDown 0.6s ease-out;
+        }
+
+        /* Pulsação */
+        @keyframes pulse-custom {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .pulse-button:hover {
+            animation: pulse-custom 0.6s ease-in-out;
+        }
+
+        /* Efeito glow ao hover */
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+            }
+        }
+
+        .glow-hover:hover {
+            animation: glow 1.5s ease-in-out infinite;
+        }
+
+        /* Animações para scroll - Seção Serviços */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.7s ease-out forwards;
+            opacity: 0;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.7s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Animações para Sobre */
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .zoom-in {
+            animation: zoomIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Animações para Promoções */
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+            70% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .bounce-in {
+            animation: bounceIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Animações com delay para múltiplos elementos */
+        .animate-delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .animate-delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .animate-delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .animate-delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        .animate-delay-5 {
+            animation-delay: 0.5s;
+        }
+
+        .animate-delay-6 {
+            animation-delay: 0.6s;
+        }
+    </style>
 </head>
 
 <body class="bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-400">
-    <header class="text-white p-4 md:p-6 flex justify-between items-center shadow-lg fixed w-full z-50 bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-400">
-        <h1 class="font-bold text-xl md:text-2xl lg:text-3xl"><i class="fa fa-cart-plus" aria-hidden="true"></i> FRcomerce</h1>
+    <header
+        class="text-white p-4 md:p-6 flex justify-between items-center shadow-lg fixed w-full z-50 bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-400">
+        <h1 class="font-bold text-xl md:text-2xl lg:text-3xl"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+            FRcomerce</h1>
 
         <nav class="flex space-x-4 md:space-x-8 self-center hidden lg:flex text-center" id="navbar">
             <a href="#Inicio" class="hover:underline text-sm lg:text-base">Inicio</a>
             <a href="#serviços" class="hover:underline text-sm lg:text-base">Serviços</a>
             <a href="#Promoções" class="hover:underline text-sm lg:text-base">Promoções</a>
-            <a href="#sobre" class="hover:underline text-sm lg:text-base">Sobre</a>
+            <a href="#sobre" class="hover:underline text-sm lg:text-base">Sobre nós</a>
             <a href="#contacto" class="hover:underline text-sm lg:text-base">Contato</a>
         </nav>
 
         <div class="flex gap-2 md:gap-3 items-center" id="divbuton">
-            <button class="text-blue-600 bg-white px-2 py-1 md:px-4 md:py-2 text-xs md:text-sm rounded-md hover:bg-gray-200 transition duration-300" onclick="location.href='login.html'">Entrar</button>
-            <button class="text-blue-600 bg-white px-2 py-1 md:px-4 md:py-2 text-xs md:text-sm rounded-md hover:bg-gray-200 transition duration-300" onclick="location.href='criarconta.html'">Criar conta</button>
+            <button
+                class="text-blue-600 bg-white px-2 py-1 md:px-4 md:py-2 text-xs md:text-sm rounded-md hover:bg-gray-200 transition duration-300"
+                onclick="location.href='login.html'">Entrar</button>
+            <button
+                class="text-blue-600 bg-white px-2 py-1 md:px-4 md:py-2 text-xs md:text-sm rounded-md hover:bg-gray-200 transition duration-300"
+                onclick="location.href='criarconta.html'">Criar conta</button>
         </div>
         <button class="text-white lg:hidden ml-4" onclick="menu()">
             <i class="fa fa-bars text-2xl" id="icon" aria-hidden="true"></i>
@@ -31,14 +249,19 @@
     </header>
     <main class="grid grid-cols-1 bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-400 pt-20">
         <section class="flex justify-center w-full" id="Inicio">
-            <div class="relative w-full min-h-screen flex items-center bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=1600&h=800&fit=crop'); background-attachment: fixed;">
-                
+            <div class="relative w-full min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
+                style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=1600&h=800&fit=crop'); background-attachment: fixed;">
+
                 <!-- Conteúdo -->
                 <div class="flex flex-col justify-center items-center w-full h-full text-center text-white px-4 py-12">
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-lg">Bem-vindo à FRcomerce</h2>
-                    <p class="text-lg sm:text-xl md:text-2xl mb-6 drop-shadow-md">Descubra nossos incríveis produtos e serviços</p>
-                    <p class="text-base sm:text-lg md:text-xl max-w-2xl drop-shadow-md mb-8">A melhor experiência de compras online com garantia de qualidade e segurança</p>
-                    <button onclick="document.getElementById('serviços').scrollIntoView({behavior:'smooth'})" class="px-6 md:px-8 py-3 md:py-4 bg-white text-blue-600 font-bold rounded-lg shadow-lg hover:bg-gray-100 transition duration-300 text-sm md:text-base">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-lg typewriter">
+                        Bem-vindo à FRcomerce</h2>
+                    <p class="text-lg sm:text-xl md:text-2xl mb-6 drop-shadow-md fade-in-up">Descubra nossos incríveis
+                        produtos e serviços</p>
+                    <p class="text-base sm:text-lg md:text-xl max-w-2xl drop-shadow-md mb-8 fade-in-up">A melhor
+                        experiência de compras online com garantia de qualidade e segurança</p>
+                    <button onclick="document.getElementById('serviços').scrollIntoView({behavior:'smooth'})"
+                        class="px-6 md:px-8 py-3 md:py-4 bg-white text-blue-600 font-bold rounded-lg shadow-lg hover:bg-gray-100 transition duration-300 text-sm md:text-base pulse-button glow-hover fade-in-up">
                         Explorar Produtos
                     </button>
                 </div>
@@ -52,62 +275,93 @@
 
                 <div class=" flex gap-8 flex-wrap justify-center ">
                     <!-- Card 1 Construção -->
-                    <div class="group w-[300px] h-[380px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white">
+                    <div
+                        class="group w-[300px] h-[380px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white service-card">
                         <div class="h-[220px] bg-gradient-to-br from-orange-400 to-orange-600 relative overflow-hidden">
-                            <img src="assets/img/construção.jfif" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="Construção">
-                            <div class="absolute top-0 right-0 bg-orange-500 text-white px-3 py-1 rounded-bl-lg font-bold">-15%</div>
+                            <img src="assets/img/construção.jfif"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                alt="Construção">
+                            <div
+                                class="absolute top-0 right-0 bg-orange-500 text-white px-3 py-1 rounded-bl-lg font-bold">
+                                -15%</div>
                         </div>
-                        <div class="h-[160px] bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex flex-col justify-between">
+                        <div
+                            class="h-[160px] bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex flex-col justify-between">
                             <div>
                                 <h3 class="font-bold text-lg mb-2">Construção</h3>
-                                <p class="text-sm text-blue-100">Materiais de qualidade premium para todos os seus projetos de construção</p>
+                                <p class="text-sm text-blue-100">Materiais de qualidade premium para todos os seus
+                                    projetos de construção</p>
                             </div>
-                            <button class="w-full bg-white text-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-50 transition">Explorar</button>
+                            <button
+                                class="w-full bg-white text-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-50 transition">Explorar</button>
                         </div>
                     </div>
 
                     <!-- Card 2 Roupas -->
-                    <div class="group w-[300px] h-[380px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white">
+                    <div
+                        class="group w-[300px] h-[380px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white service-card">
                         <div class="h-[220px] bg-gradient-to-br from-pink-400 to-pink-600 relative overflow-hidden">
-                            <img src="assets/img/download.jfif" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="Roupas">
-                            <div class="absolute top-0 right-0 bg-pink-500 text-white px-3 py-1 rounded-bl-lg font-bold">-25%</div>
+                            <img src="assets/img/download.jfif"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                alt="Roupas">
+                            <div
+                                class="absolute top-0 right-0 bg-pink-500 text-white px-3 py-1 rounded-bl-lg font-bold">
+                                -25%</div>
                         </div>
-                        <div class="h-[160px] bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex flex-col justify-between">
+                        <div
+                            class="h-[160px] bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex flex-col justify-between">
                             <div>
                                 <h3 class="font-bold text-lg mb-2">Roupas & Moda</h3>
-                                <p class="text-sm text-blue-100">Coleção exclusiva de roupas e acessórios da moda atual</p>
+                                <p class="text-sm text-blue-100">Coleção exclusiva de roupas e acessórios da moda atual
+                                </p>
                             </div>
-                            <button class="w-full bg-white text-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-50 transition">Explorar</button>
+                            <button
+                                class="w-full bg-white text-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-50 transition">Explorar</button>
                         </div>
                     </div>
 
                     <!-- Card 3 Eletrônicos -->
-                    <div class="group w-[300px] h-[380px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white">
+                    <div
+                        class="group w-[300px] h-[380px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white service-card">
                         <div class="h-[220px] bg-gradient-to-br from-purple-400 to-purple-600 relative overflow-hidden">
-                            <img src="assets/img/electronicos.jfif" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="Eletrônicos">
-                            <div class="absolute top-0 right-0 bg-purple-500 text-white px-3 py-1 rounded-bl-lg font-bold">-20%</div>
+                            <img src="assets/img/electronicos.jfif"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                alt="Eletrônicos">
+                            <div
+                                class="absolute top-0 right-0 bg-purple-500 text-white px-3 py-1 rounded-bl-lg font-bold">
+                                -20%</div>
                         </div>
-                        <div class="h-[160px] bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex flex-col justify-between">
+                        <div
+                            class="h-[160px] bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex flex-col justify-between">
                             <div>
                                 <h3 class="font-bold text-lg mb-2">Eletrônicos</h3>
-                                <p class="text-sm text-blue-100">Tecnologia de ponta com garantia e suporte técnico completo</p>
+                                <p class="text-sm text-blue-100">Tecnologia de ponta com garantia e suporte técnico
+                                    completo</p>
                             </div>
-                            <button class="w-full bg-white text-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-50 transition">Explorar</button>
+                            <button
+                                class="w-full bg-white text-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-50 transition">Explorar</button>
                         </div>
                     </div>
 
                     <!-- Card 4 Eletrodomésticos -->
-                    <div class="group w-[300px] h-[380px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white">
+                    <div
+                        class="group w-[300px] h-[380px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white service-card">
                         <div class="h-[220px] bg-gradient-to-br from-red-400 to-red-600 relative overflow-hidden">
-                            <img src="assets/img/electrodomesticos.jfif" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="Eletrodomésticos">
-                            <div class="absolute top-0 right-0 bg-red-500 text-white px-3 py-1 rounded-bl-lg font-bold">-30%</div>
+                            <img src="assets/img/electrodomesticos.jfif"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                alt="Eletrodomésticos">
+                            <div class="absolute top-0 right-0 bg-red-500 text-white px-3 py-1 rounded-bl-lg font-bold">
+                                -30%</div>
                         </div>
-                        <div class="h-[160px] bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex flex-col justify-between">
+                        <div
+                            class="h-[160px] bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex flex-col justify-between">
                             <div>
                                 <h3 class="font-bold text-lg mb-2">Eletrodomésticos</h3>
-                                <p class="text-sm text-blue-100">Eletrodomésticos modernos que simplificam seu dia a dia</p>
+                                <p class="text-sm text-blue-100">Eletrodomésticos modernos que simplificam seu dia a dia
+                                </p>
                             </div>
-                            <button class="w-full bg-white text-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-50 transition">Explorar</button>
+                            <button
+                                class="w-full bg-white text-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-50 transition">Explorar</button>
                         </div>
                     </div>
                 </div>
@@ -128,28 +382,35 @@
                         <div>
                             <h3 class="text-2xl font-bold text-blue-600 mb-3">Quem Somos</h3>
                             <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                                A FRcomerce é uma plataforma inovadora de comércio eletrônico dedicada a oferecer a melhor experiência de compras online. Com uma visão clara de transformar o mercado digital, nos empenhamos em conectar consumidores com produtos de qualidade, a preços acessíveis e com excelente atendimento.
+                                A FRcomerce é uma plataforma inovadora de comércio eletrônico dedicada a oferecer a
+                                melhor experiência de compras online. Com uma visão clara de transformar o mercado
+                                digital, nos empenhamos em conectar consumidores com produtos de qualidade, a preços
+                                acessíveis e com excelente atendimento.
                             </p>
                         </div>
 
                         <div>
                             <h3 class="text-2xl font-bold text-blue-600 mb-3">Nossa Missão</h3>
                             <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                                Tornar as compras online acessíveis, seguras e agradáveis para todos, oferecendo produtos variados com qualidade garantida e um atendimento ao cliente excepcional. Acreditamos que cada cliente merece uma experiência personalizada e confiável.
+                                Tornar as compras online acessíveis, seguras e agradáveis para todos, oferecendo
+                                produtos variados com qualidade garantida e um atendimento ao cliente excepcional.
+                                Acreditamos que cada cliente merece uma experiência personalizada e confiável.
                             </p>
                         </div>
 
                         <div>
                             <h3 class="text-2xl font-bold text-blue-600 mb-3">Nossa Visão</h3>
                             <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                                Ser a plataforma de e-commerce mais confiável, inovadora e orientada ao cliente em Angola e na região, reconhecida pela qualidade de seus produtos e excelência no serviço.
+                                Ser a plataforma de e-commerce mais confiável, inovadora e orientada ao cliente em
+                                Angola e na região, reconhecida pela qualidade de seus produtos e excelência no serviço.
                             </p>
                         </div>
                     </div>
 
                     <!-- Valores -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                        <div
+                            class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 about-animate">
                             <div class="text-4xl mb-3">
                                 <i class="fas fa-shield-alt"></i>
                             </div>
@@ -157,7 +418,8 @@
                             <p class="text-sm text-blue-100">Transparência e segurança em cada transação</p>
                         </div>
 
-                        <div class="bg-gradient-to-br from-cyan-500 to-cyan-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                        <div
+                            class="bg-gradient-to-br from-cyan-500 to-cyan-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 about-animate">
                             <div class="text-4xl mb-3">
                                 <i class="fas fa-star"></i>
                             </div>
@@ -165,7 +427,8 @@
                             <p class="text-sm text-cyan-100">Produtos selecionados e revisados com cuidado</p>
                         </div>
 
-                        <div class="bg-gradient-to-br from-teal-500 to-teal-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                        <div
+                            class="bg-gradient-to-br from-teal-500 to-teal-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 about-animate">
                             <div class="text-4xl mb-3">
                                 <i class="fas fa-headset"></i>
                             </div>
@@ -173,7 +436,8 @@
                             <p class="text-sm text-teal-100">Suporte disponível para resolver suas dúvidas</p>
                         </div>
 
-                        <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                        <div
+                            class="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 about-animate">
                             <div class="text-4xl mb-3">
                                 <i class="fas fa-rocket"></i>
                             </div>
@@ -185,15 +449,15 @@
 
                 <!-- Estatísticas -->
                 <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
-                    <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="text-center p-6 bg-gray-50 rounded-lg about-animate">
                         <div class="text-4xl font-bold text-blue-600 mb-2">10K+</div>
                         <p class="text-gray-700 font-semibold">Clientes Satisfeitos</p>
                     </div>
-                    <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="text-center p-6 bg-gray-50 rounded-lg about-animate">
                         <div class="text-4xl font-bold text-blue-600 mb-2">500+</div>
                         <p class="text-gray-700 font-semibold">Produtos Disponíveis</p>
                     </div>
-                    <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="text-center p-6 bg-gray-50 rounded-lg about-animate">
                         <div class="text-4xl font-bold text-blue-600 mb-2">24/7</div>
                         <p class="text-gray-700 font-semibold">Atendimento Online</p>
                     </div>
@@ -205,7 +469,7 @@
             <h2 class="text-4xl font-bold mt-2 text-white text-center" id="promo"></h2>
             <hr class="w-24 border-2 border-white mb-8">
             <div class="grid  lg:grid-cols-3  space-center sm:grid-cols-2 gap-8  mb-16  place-items-center   px-2">
-                <div class="w-[300px] h-[350px]  shadow-lg  rounded-md overflow-hidden hover:scale-105">
+                <div class="w-[300px] h-[350px]  shadow-lg  rounded-md overflow-hidden hover:scale-105 promo-card">
                     <div class="h-1/2  bg-gray-200 items-center flex justify-center">
                         <div class="w-[100px] h-[100px] rounded-full ">
                             <svg class="w-6 h-6 text-gray-800 w-[100px] h-[100px]  " aria-hidden="true"
@@ -224,7 +488,7 @@
                     </div>
                 </div>
 
-                <div class="w-[300px] h-[350px]  shadow-lg  rounded-md overflow-hidden hover:scale-105">
+                <div class="w-[300px] h-[350px]  shadow-lg  rounded-md overflow-hidden hover:scale-105 promo-card">
                     <div class="h-1/2  bg-gray-200 items-center flex justify-center">
                         <div class="w-[100px] h-[100px] rounded-full ">
                             <svg class="w-6 h-6 text-gray-800 w-[100px] h-[100px]  " aria-hidden="true"
@@ -244,10 +508,10 @@
                     </div>
 
                 </div>
-                <div class="w-[300px] h-[350px]  shadow-lg  rounded-md overflow-hidden hover:scale-105">
+                <div class="w-[300px] h-[350px]  shadow-lg  rounded-md overflow-hidden hover:scale-105 promo-card">
                     <div class="h-1/2  bg-gray-200 items-center flex justify-center">
                         <div class="w-[100px] h-[100px] rounded-full ">
-                            <svg class="w-6 h-6 text-gray-800 w-[100px] h-[100px]  " aria-hidden="true"
+                            <svg class="w-6 h-6 text-gray-800 w-[100px] h-[100px]  "       aria-hidden="true"   
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
                                     d="M20.29 8.567c.133.323.334.613.59.85v.002a3.536 3.536 0 0 1 0 5.166 2.442 2.442 0 0 0-.776 1.868 3.534 3.534 0 0 1-3.651 3.653 2.483 2.483 0 0 0-1.87.776 3.537 3.537 0 0 1-5.164 0 2.44 2.44 0 0 0-1.87-.776 3.533 3.533 0 0 1-3.653-3.654 2.44 2.44 0 0 0-.775-1.868 3.537 3.537 0 0 1 0-5.166 2.44 2.44 0 0 0 .775-1.87 3.55 3.55 0 0 1 1.033-2.62 3.594 3.594 0 0 1 2.62-1.032 2.401 2.401 0 0 0 1.87-.775 3.535 3.535 0 0 1 5.165 0 2.444 2.444 0 0 0 1.869.775 3.532 3.532 0 0 1 3.652 3.652c-.012.35.051.697.184 1.02ZM9.927 7.371a1 1 0 1 0 0 2h.01a1 1 0 0 0 0-2h-.01Zm5.889 2.226a1 1 0 0 0-1.414-1.415L8.184 14.4a1 1 0 0 0 1.414 1.414l6.218-6.217Zm-2.79 5.028a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01Z"
@@ -262,7 +526,7 @@
                         <button class="m-auto  bg-white text-blue-600 rounded-lg p-3 m-auto">Aderir ao pacote</button>
                     </div>
                 </div>
-                <div class="w-[300px] h-[350px]  shadow-lg  rounded-md overflow-hidden hover:scale-105">
+                <div class="w-[300px] h-[350px]  shadow-lg  rounded-md overflow-hidden hover:scale-105 promo-card">
                     <div class="h-1/2  bg-gray-200 items-center flex justify-center">
                         <div class="w-[100px] h-[100px] rounded-full ">
                             <svg class="w-6 h-6 text-gray-800 w-[100px] h-[100px]  " aria-hidden="true"
@@ -281,7 +545,7 @@
                     </div>
                 </div>
 
-                <div class="w-[300px] h-[350px]  shadow-lg  rounded-md overflow-hidden hover:scale-105">
+                <div class="w-[300px] h-[350px]  shadow-lg  rounded-md overflow-hidden hover:scale-105 promo-card">
                     <div class="h-1/2  bg-gray-200 items-center flex justify-center">
                         <div class="w-[100px] h-[100px] rounded-full ">
                             <svg class="w-6 h-6 text-gray-800 w-[100px] h-[100px]  " aria-hidden="true"
@@ -321,31 +585,31 @@
 
         </section>
 
-        <section class="py-40 flex  flex-col justify-center items-center gap-4 w-full " id="funcionamento">
+        <section class="py-40 flex  flex-col justify-center items-center gap-4 w-full text-center" id="funcionamento">
             <h2 class="text-4xl font-bold mt-2 text-white">Como funciona o sistema</h2>
             <hr class="w-24 border-2 border-white mb-8">
             <p class="text-white">Siga os passos abaixo para começar a usar nossa plataforma:</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-blue-800 text-white p-6 rounded-lg shadow-lg w-full max-w-md gap-2 hover:scale-105">
+                <div class="bg-blue-800 text-white p-6 rounded-lg shadow-lg w-full max-w-sm gap-2 hover:scale-105 ">
                     <span
                         class="flex justify-center items-center text-4xl font-bold transition-transform duration-300 hover:translate-x-3 size-16 rounded-full bg-blue-600">1</span>
                     <h3 class="text-xl font-bold mb-2">Passo 1</h3>
                     <p>Registre-se na plataforma e crie sua conta.</p>
                 </div>
-                <div class="bg-blue-800 text-white p-6 rounded-lg shadow-lg w-full max-w-md hover:scale-105">
+                <div class="bg-blue-800 text-white p-6 rounded-lg shadow-lg w-full max-w-sm hover:scale-105">
 
                     <span
                         class="flex justify-center items-center text-4xl font-bold transition-transform duration-300 hover:translate-x-3 size-16 rounded-full bg-blue-600">2</span>
                     <h3 class="text-xl font-bold mb-2">Passo 2</h3>
                     <p>Adicione produtos e configure suas preferências.</p>
                 </div>
-                <div class="bg-blue-800 text-white p-6 rounded-lg shadow-lg w-full max-w-md hover:scale-105">
+                <div class="bg-blue-800 text-white p-6 rounded-lg shadow-lg w-full max-w-sm hover:scale-105">
                     <span
                         class="flex justify-center items-center text-4xl font-bold transition-transform duration-300 hover:translate-x-3 size-16 rounded-full bg-blue-600">3</span>
                     <h3 class="text-xl font-bold mb-2">Passo 3</h3>
                     <p>Publique seu catálogo e comece a vender.</p>
                 </div>
-                <div class="bg-blue-800 text-white p-6 rounded-lg shadow-lg w-full max-w-md hover:scale-105">
+                <div class="bg-blue-800 text-white p-6 rounded-lg shadow-lg w-full max-w-sm hover:scale-105">
                     <span
                         class="flex justify-center items-center text-4xl font-bold transition-transform duration-300 hover:translate-x-3 size-16 rounded-full bg-blue-600">4</span>
                     <h3 class="text-xl font-bold mb-2">Passo 4</h3>
@@ -486,7 +750,8 @@
         </section>
     </main>
     <footer class="flex justify-center flex-col  text-center bg-blue-800 gap-20">
-        <div class=" grid xl:grid-cols-4 lg:grid-cols-2 sm:grid-cols-1 place-items-center py-80 gap-20 text-white text-sm mb-30">
+        <div
+            class=" grid xl:grid-cols-4 lg:grid-cols-2 sm:grid-cols-1 place-items-center py-80 gap-20 text-white text-sm mb-30">
             <div class=" flex flex-col gap-2 footer-links ">
                 <h2 class="w-full mb-3 font-bold text-2xl">Links Rápidos</h2>
                 <a href="#Inicio" class="mx-2 hover:underline">Início</a>
@@ -554,6 +819,70 @@
             document.querySelector('#icon').classList.toggle('fa-close');
             document.querySelector('#divbuton').classList.toggle('ml-auto bg-ray-200');
         }
+
+        // Observar todas as seções quando o documento carregar
+        document.addEventListener('DOMContentLoaded', function () {
+            // Observa todos os elementos com classes de animação
+            const animatedElements = document.querySelectorAll('.service-card, .about-animate, .promo-card');
+
+            const elementObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const rect = element.getBoundingClientRect();
+
+                        // Serviços - alternados
+                        if (element.classList.contains('service-card')) {
+                            const index = Array.from(document.querySelectorAll('.service-card')).indexOf(element);
+                            if (index % 2 === 0) {
+                                element.style.opacity = '0';
+                                setTimeout(() => {
+                                    element.classList.add('slide-in-left');
+                                    element.style.animationDelay = (index * 0.15) + 's';
+                                }, 50);
+                            } else {
+                                element.style.opacity = '0';
+                                setTimeout(() => {
+                                    element.classList.add('slide-in-right');
+                                    element.style.animationDelay = (index * 0.15) + 's';
+                                }, 50);
+                            }
+                        }
+
+                        // Sobre - zoom
+                        if (element.classList.contains('about-animate')) {
+                            const index = Array.from(document.querySelectorAll('.about-animate')).indexOf(element);
+                            element.style.opacity = '0';
+                            setTimeout(() => {
+                                element.classList.add('zoom-in');
+                                element.style.animationDelay = (index * 0.15) + 's';
+                            }, 50);
+                        }
+
+                        // Promoções - bounce
+                        if (element.classList.contains('promo-card')) {
+                            const index = Array.from(document.querySelectorAll('.promo-card')).indexOf(element);
+                            element.style.opacity = '0';
+                            setTimeout(() => {
+                                element.classList.add('bounce-in');
+                                element.style.animationDelay = (index * 0.15) + 's';
+                            }, 50);
+                        }
+
+                        // Parar de observar após animar
+                        elementObserver.unobserve(element);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Observar todos os elementos animados
+            animatedElements.forEach(el => {
+                elementObserver.observe(el);
+            });
+        });
     </script>
 </body>
 
