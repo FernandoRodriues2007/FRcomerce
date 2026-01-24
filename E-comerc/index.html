@@ -32,16 +32,24 @@
     </header>
     <main class="grid grid-cols-1 bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-400">
         <section class=" flex justify-center" id="Inicio">
-            <div class="text-center text-white    py-96 sm:46  w-full" id="Bem-vindo">
-                <h2 class="text-4xl font-bold mb-4">Bem-vindo à Nossa FRcomerce</h2>
-                <p class="text-lg">Descubra nossos incriveis produtos e serviços.</p>
-
-                <button id="comecar-agora"
-                    class="mt-8 px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow-md hover:bg-gray-200 transition animate-bounce duration-300">Começar
-                    Agora</button>
-
-
+            <div class="relative w-full h-screen overflow-hidden">
+                <!-- Vídeo de fundo -->
+                <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover">
+                    <source src="https://videos.pexels.com/video-files/3045163/3045163-sd_640_360_30fps.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos HTML5.
+                </video>
+                
+                <!-- Overlay escuro para melhor legibilidade -->
+                <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40"></div>
+                
+                <!-- Conteúdo -->
+                <div class="relative z-10 flex flex-col justify-center items-center h-full text-center text-white px-4">
+                    <h2 class="text-5xl sm:text-6xl font-bold mb-4 drop-shadow-lg">Bem-vindo à FRcomerce</h2>
+                    <p class="text-xl sm:text-2xl mb-8 drop-shadow-md">Descubra nossos incríveis produtos e serviços</p>
+                    <p class="text-lg sm:text-xl max-w-2xl drop-shadow-md">A melhor experiência de compras online com garantia de qualidade e segurança</p>
+                </div>
             </div>
+
             <div class=" hidden w-full grid sm:grid-cols-1 mt-1 text-center place-items-center py-48  " id="Descrição">
                 <div class="w-1/2 text-white flex justify-center items-center flex-col  px-20 my-20 sm:px-4 sm:my-4 sm:w-full">
                     <h2 class="text-md xl:text-4xl font-bold mb-4 ">FRcomerce</h2>
@@ -70,54 +78,64 @@
                 <p class="text-lg mb-8">Oferecemos uma variedade de serviços para atender suas necessidades.</p>
 
                 <div class=" flex gap-8 flex-wrap justify-center ">
-                    <div class="w-[300px] h-[350px] rounded-md  overflow-hidden hover:scale-105">
-                        <div class="h-[200px] bg-white ">
-                            <img src="assets/img/construção.jfif" class="w-full h-full" alt="">
+                    <!-- Card 1 Construção -->
+                    <div class="group w-[300px] h-[380px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white">
+                        <div class="h-[220px] bg-gradient-to-br from-orange-400 to-orange-600 relative overflow-hidden">
+                            <img src="assets/img/construção.jfif" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="Construção">
+                            <div class="absolute top-0 right-0 bg-orange-500 text-white px-3 py-1 rounded-bl-lg font-bold">-15%</div>
                         </div>
-                        <div class="h-[150px] bg-blue-600 text-white p-2  flex flex-col  justify-center">
-                            <h3 class="font-semibold">Construção</h3>
-                            <p class="text-sm">Descrição do produto 1</p>
-
-                            <button class="m-auto  bg-white text-blue-600 rounded-lg p-3 m-auto">Mais detalhes</button>
+                        <div class="h-[160px] bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">Construção</h3>
+                                <p class="text-sm text-blue-100">Materiais de qualidade premium para todos os seus projetos de construção</p>
+                            </div>
+                            <button class="w-full bg-white text-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-50 transition">Explorar</button>
                         </div>
-
                     </div>
 
-                    <div class="w-[300px] h-[350px] rounded-md  overflow-hidden hover:scale-105">
-                        <div class="h-[200px] bg-white ">
-                            <img src="assets/img/download.jfif" class="w-full h-full" alt="">
+                    <!-- Card 2 Roupas -->
+                    <div class="group w-[300px] h-[380px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white">
+                        <div class="h-[220px] bg-gradient-to-br from-pink-400 to-pink-600 relative overflow-hidden">
+                            <img src="assets/img/download.jfif" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="Roupas">
+                            <div class="absolute top-0 right-0 bg-pink-500 text-white px-3 py-1 rounded-bl-lg font-bold">-25%</div>
                         </div>
-                        <div class="h-[150px] bg-blue-600 text-white p-2 flex flex-col  justify-center">
-                            <h3 class="font-semibold">Roupas</h3>
-                            <p class="text-sm">Descrição do produto 1</p>
-
-                            <button class="m-auto  bg-white text-blue-600 rounded-lg p-3 m-auto">Mais detalhes</button>
+                        <div class="h-[160px] bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">Roupas & Moda</h3>
+                                <p class="text-sm text-blue-100">Coleção exclusiva de roupas e acessórios da moda atual</p>
+                            </div>
+                            <button class="w-full bg-white text-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-50 transition">Explorar</button>
                         </div>
-
                     </div>
-                    <div class="w-[300px] h-[350px] rounded-md  overflow-hidden hover:scale-105">
-                        <div class="h-[200px] bg-white ">
-                            <img src="assets/img/electronicos.jfif" class="w-full h-full" alt="">
-                        </div>
-                        <div class="h-[150px] bg-blue-600 text-white p-2 flex flex-col  justify-center">
-                            <h3 class="font-semibold">Eletrônicos</h3>
-                            <p class="text-sm">Descrição do produto 1</p>
 
-                            <button class="m-auto  bg-white text-blue-600 rounded-lg p-3 m-auto">Mais detalhes</button>
+                    <!-- Card 3 Eletrônicos -->
+                    <div class="group w-[300px] h-[380px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white">
+                        <div class="h-[220px] bg-gradient-to-br from-purple-400 to-purple-600 relative overflow-hidden">
+                            <img src="assets/img/electronicos.jfif" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="Eletrônicos">
+                            <div class="absolute top-0 right-0 bg-purple-500 text-white px-3 py-1 rounded-bl-lg font-bold">-20%</div>
                         </div>
-
+                        <div class="h-[160px] bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">Eletrônicos</h3>
+                                <p class="text-sm text-blue-100">Tecnologia de ponta com garantia e suporte técnico completo</p>
+                            </div>
+                            <button class="w-full bg-white text-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-50 transition">Explorar</button>
+                        </div>
                     </div>
-                    <div class="w-[300px] h-[350px] rounded-md  overflow-hidden hover:scale-105">
-                        <div class="h-[200px] bg-white ">
-                            <img src="assets/img/electrodomesticos.jfif" class="w-full h-full" alt="">
-                        </div>
-                        <div class="h-[150px] bg-blue-600 text-white p-2 flex flex-col  justify-center">
-                            <h3 class="font-semibold">Electródomesticos</h3>
-                            <p class="text-sm">Descrição do produto 1</p>
 
-                            <button class="m-auto  bg-white text-blue-600 rounded-lg p-3 m-auto">Mais detalhes</button>
+                    <!-- Card 4 Eletrodomésticos -->
+                    <div class="group w-[300px] h-[380px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white">
+                        <div class="h-[220px] bg-gradient-to-br from-red-400 to-red-600 relative overflow-hidden">
+                            <img src="assets/img/electrodomesticos.jfif" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="Eletrodomésticos">
+                            <div class="absolute top-0 right-0 bg-red-500 text-white px-3 py-1 rounded-bl-lg font-bold">-30%</div>
                         </div>
-
+                        <div class="h-[160px] bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">Eletrodomésticos</h3>
+                                <p class="text-sm text-blue-100">Eletrodomésticos modernos que simplificam seu dia a dia</p>
+                            </div>
+                            <button class="w-full bg-white text-blue-600 rounded-lg py-2 font-semibold hover:bg-blue-50 transition">Explorar</button>
+                        </div>
                     </div>
                 </div>
             </div>

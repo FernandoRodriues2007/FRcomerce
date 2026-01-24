@@ -27,24 +27,60 @@ async function carregarProdutos(categoria = null, pagina = 1) {
         }
 
         container.innerHTML = produtos.map(produto => `
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                ${produto.imagem ? `<img src="${produto.imagem}" alt="${produto.nome}" class="w-full h-48 object-cover">` : '<div class="w-full h-48 bg-gray-200 flex items-center justify-center"><span class="text-gray-400">Sem imagem</span></div>'}
-                <div class="p-4">
-                    <h3 class="font-bold text-lg mb-2">${produto.nome}</h3>
-                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">${produto.descricao}</p>
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-blue-600 font-bold text-lg">R$ ${parseFloat(produto.preco).toFixed(2)}</span>
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded">${produto.categoria}</span>
+            <div class="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105 transform">
+                <!-- Imagem do Produto com Overlay -->
+                <div class="relative h-56 bg-gray-200 overflow-hidden">
+                    ${produto.imagem ? `<img src="${produto.imagem}" alt="${produto.nome}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">` : '<div class="w-full h-full flex items-center justify-center"><span class="text-gray-400">Sem imagem</span></div>'}
+                    
+                    <!-- Badge de Estoque -->
+                    <div class="absolute top-3 right-3">
+                        ${produto.estoque > 0 ? `<span class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">Em Estoque</span>` : `<span class="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">Fora</span>`}
                     </div>
-                    <div class="flex gap-2">
-                        <button onclick="adicionarAoCarrinho('${produto.id}', '${produto.nome}', ${produto.preco})" 
-                                class="flex-1 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
-                            Adicionar ao Carrinho
-                        </button>
-                        <button onclick="verDetalhes('${produto.id}')" 
-                                class="flex-1 bg-gray-200 text-gray-700 py-2 rounded hover:bg-gray-300 transition">
-                            Ver Detalhes
-                        </button>
+                    
+                    <!-- Overlay com Rating -->
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div class="flex items-center text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <span class="text-white text-sm ml-1">4.8 (125 reviews)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdo do Card -->
+                <div class="p-4 flex flex-col justify-between h-56">
+                    <div>
+                        <!-- Nome e Categoria -->
+                        <h3 class="font-bold text-lg mb-1 text-gray-800 line-clamp-2 group-hover:text-blue-600 transition">${produto.nome}</h3>
+                        <p class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full inline-block mb-2">${produto.categoria}</p>
+                        
+                        <!-- Descrição -->
+                        <p class="text-gray-600 text-sm mb-3 line-clamp-2">${produto.descricao}</p>
+                    </div>
+
+                    <!-- Preço e Ações -->
+                    <div>
+                        <div class="flex justify-between items-end mb-3">
+                            <div>
+                                <span class="text-2xl font-bold text-blue-600">R$ ${parseFloat(produto.preco).toFixed(2)}</span>
+                                <p class="text-xs text-gray-500">Preço unitário</p>
+                            </div>
+                            <div class="text-xs text-gray-500 text-right">
+                                <p>Stock: ${produto.estoque}</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Botões de Ação -->
+                        <div class="flex gap-2">
+                            <button onclick="adicionarAoCarrinho('${produto.id}', '${produto.nome}', ${produto.preco})" 
+                                    class="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2 rounded-lg hover:from-blue-700 hover:to-blue-800 transition font-semibold text-sm ${produto.estoque <= 0 ? 'opacity-50 cursor-not-allowed' : ''}"
+                                    ${produto.estoque <= 0 ? 'disabled' : ''}>
+                                <i class="fas fa-cart-plus mr-1"></i> Carrinho
+                            </button>
+                            <button onclick="verDetalhes('${produto.id}')" 
+                                    class="flex-1 bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition font-semibold text-sm">
+                                <i class="fas fa-eye mr-1"></i> Ver
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
